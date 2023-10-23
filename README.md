@@ -46,7 +46,7 @@ repositories {
 }
 
 dependencies {
-  implementation("com.eygraber:compose-placeholder:1.0.1-SNAPSHOT")
+  implementation("com.eygraber:compose-placeholder:1.0.1-SNAPSHOT-SNAPSHOT")
 }
 ```
 
