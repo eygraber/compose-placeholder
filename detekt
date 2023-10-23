@@ -1,0 +1,4 @@
+#!/bin/sh
+
+./format
+./gradlew detektJvmMain detektJvmTest detektJsMain detektAndroidDebug detektAndroidDebugUnitTest detektMetadataMain

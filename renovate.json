@@ -1,0 +1,19 @@
+{
+  "extends": [
+    "config:base"
+  ],
+  "enabledManagers": ["gradle", "gradle-wrapper", "github-actions"],
+  "labels": ["dependencies"],
+  "prHourlyLimit": 3,
+  "packageRules": [
+    {
+      "matchDatasources": ["maven"],
+      "depType": "dependencies",
+      "registryUrls": [
+        "https://repo.maven.apache.org/maven2/",
+        "https://dl.google.com/dl/android/maven2/",
+        "https://plugins.gradle.org/m2"
+      ]
+    }
+  ]
+}

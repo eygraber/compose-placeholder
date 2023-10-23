@@ -1,0 +1,11 @@
+naming:
+  FunctionNaming:
+    active: false
+
+style:
+  MagicNumber:
+    active: false
+
+Compose:
+  ModifierMissing:
+    active: false

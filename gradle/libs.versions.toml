@@ -1,0 +1,60 @@
+[versions]
+agp = "8.2.0-rc01"
+
+android-sdk-compile = "34"
+android-sdk-target = "34"
+android-sdk-min = "21"
+
+composeJetbrains = "1.5.3"
+
+conventions = "0.0.52"
+
+detekt = "1.23.1"
+detektCompose = "0.3.0"
+detektEygraber = "1.0.11"
+
+dokka = "1.9.10"
+
+imageLoader = "1.6.8"
+kotlin = "1.9.10"
+
+kotest = "5.7.2"
+
+kotlinx-coroutines = "1.7.3"
+
+ktlint = "1.0.1"
+
+publish = "0.25.3"
+
+[plugins]
+conventions = { id = "com.eygraber.conventions", version.ref = "conventions" }
+
+[libraries]
+buildscript-android = { module = "com.android.tools.build:gradle", version.ref = "agp" }
+buildscript-androidCacheFix = { module = "gradle.plugin.org.gradle.android:android-cache-fix-gradle-plugin", version = "2.8.1" }
+buildscript-compose = { module = "org.jetbrains.compose:compose-gradle-plugin", version.ref = "composeJetbrains" }
+buildscript-detekt = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "detekt" }
+buildscript-dokka = { module = "org.jetbrains.dokka:dokka-gradle-plugin", version.ref = "dokka" }
+buildscript-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+buildscript-publish = { module = "com.vanniktech:gradle-maven-publish-plugin", version.ref = "publish" }
+
+# note: the compiler version doesn't necessarily track with the regular jetbrains compose version
+compose-compilerJetbrains = "org.jetbrains.compose.compiler:compiler:1.5.2"
+compose-compilerJetpack = "androidx.compose.compiler:compiler:1.5.3"
+compose-uiUtil = { module = "org.jetbrains.compose.ui:ui-util", version.ref = "composeJetbrains" }
+
+detektCompose = { module = "io.nlopez.compose.rules:detekt", version.ref = "detektCompose" }
+detektEygraber-formatting = { module = "com.eygraber.detekt.rules:formatting", version.ref = "detektEygraber" }
+detektEygraber-style = { module = "com.eygraber.detekt.rules:style", version.ref = "detektEygraber" }
+
+imageLoader = { module = "io.github.qdsfdhvh:image-loader", version.ref = "imageLoader" }
+
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinx-coroutines" }
+
+# not actually used; just here so renovate picks it up
+ktlint = { module = "com.pinterest.ktlint:ktlint-bom", version.ref = "ktlint" }
+
+test-compose-android-uiJunit = { module = "androidx.compose.ui:ui-test-junit4" }
+test-compose-android-uiTestManifest = { module = "androidx.compose.ui:ui-test-manifest" }
+test-kotest-assertions = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
+test-robolectric = "org.robolectric:robolectric:4.11-beta-2"
