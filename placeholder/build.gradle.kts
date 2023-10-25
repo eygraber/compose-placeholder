@@ -30,6 +30,7 @@ kotlin {
       dependencies {
         implementation(compose.foundation)
         implementation(libs.compose.uiUtil)
+        implementation(libs.kotlinx.coroutines.core)
       }
     }
 

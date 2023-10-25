@@ -661,7 +661,7 @@ Compose:
     # You can optionally add your own composables here
     # contentEmitters: MyComposable,MyOtherComposable
   ModifierComposable:
-    active: true
+    active: false
   ModifierMissing:
     active: true
   ModifierReused:
