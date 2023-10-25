@@ -17,12 +17,12 @@
 
 package com.eygraber.compose.placeholder.material
 
-import androidx.compose.animation.core.FiniteAnimationSpec
-import androidx.compose.animation.core.Transition
+import androidx.compose.animation.core.AnimationSpec
 import androidx.compose.animation.core.spring
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.contentColorFor
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
 import androidx.compose.ui.graphics.Color
@@ -43,6 +43,7 @@ import com.eygraber.compose.placeholder.placeholder
  * on top of [backgroundColor]. Defaults to `0.1f`.
  */
 @Composable
+@ReadOnlyComposable
 public fun PlaceholderDefaults.color(
   backgroundColor: Color = MaterialTheme.colors.surface,
   contentColor: Color = contentColorFor(backgroundColor),
@@ -58,6 +59,7 @@ public fun PlaceholderDefaults.color(
  * @param alpha The alpha component to set on [backgroundColor]. Defaults to `0.3f`.
  */
 @Composable
+@ReadOnlyComposable
 public fun PlaceholderDefaults.fadeHighlightColor(
   backgroundColor: Color = MaterialTheme.colors.surface,
   alpha: Float = 0.3f,
@@ -72,6 +74,7 @@ public fun PlaceholderDefaults.fadeHighlightColor(
  * @param alpha The alpha component to set on [backgroundColor]. Defaults to `0.75f`.
  */
 @Composable
+@ReadOnlyComposable
 public fun PlaceholderDefaults.shimmerHighlightColor(
   backgroundColor: Color = MaterialTheme.colors.surface,
   alpha: Float = 0.75f,
@@ -84,8 +87,8 @@ public fun PlaceholderDefaults.shimmerHighlightColor(
  * [Modifier.placeholder], along with the values provided by [PlaceholderDefaults].
  *
  * A cross-fade transition will be applied to the content and placeholder UI when the [visible]
- * value changes. The transition can be customized via the [contentFadeTransitionSpec] and
- * [placeholderFadeTransitionSpec] parameters.
+ * value changes. The transition can be customized via the [contentFadeAnimationSpec] and
+ * [placeholderFadeAnimationSpec] parameters.
  *
  * You can provide a [PlaceholderHighlight] which runs an highlight animation on the placeholder.
  * The [shimmer] and [fade] implementations are provided for easy usage.
@@ -102,27 +105,27 @@ public fun PlaceholderDefaults.shimmerHighlightColor(
  * @param shape desired shape of the placeholder. If null is provided the placeholder
  * will use the small shape set in [MaterialTheme.shapes].
  * @param highlight optional highlight animation.
- * @param placeholderFadeTransitionSpec The transition spec to use when fading the placeholder
- * on/off screen. The boolean parameter defined for the transition is [visible].
- * @param contentFadeTransitionSpec The transition spec to use when fading the content
- * on/off screen. The boolean parameter defined for the transition is [visible].
+ * @param placeholderFadeAnimationSpec The animation spec to use when fading the placeholder
+ * on/off screen.
+ * @param contentFadeAnimationSpec The animation spec to use when fading the content
+ * on/off screen.
  */
+@Composable
+@ReadOnlyComposable
 public fun Modifier.placeholder(
   visible: Boolean,
   color: Color = Color.Unspecified,
   shape: Shape? = null,
   highlight: PlaceholderHighlight? = null,
-  placeholderFadeTransitionSpec: @Composable Transition.Segment<Boolean>.() -> FiniteAnimationSpec<Float> = {
-    spring()
-  },
-  contentFadeTransitionSpec: @Composable Transition.Segment<Boolean>.() -> FiniteAnimationSpec<Float> = { spring() },
+  placeholderFadeAnimationSpec: AnimationSpec<Float> = spring(),
+  contentFadeAnimationSpec: AnimationSpec<Float> = spring(),
 ): Modifier = composed {
   Modifier.placeholder(
     visible = visible,
     color = if(color.isSpecified) color else PlaceholderDefaults.color(),
     shape = shape ?: MaterialTheme.shapes.small,
     highlight = highlight,
-    placeholderFadeTransitionSpec = placeholderFadeTransitionSpec,
-    contentFadeTransitionSpec = contentFadeTransitionSpec,
+    placeholderFadeAnimationSpec = placeholderFadeAnimationSpec,
+    contentFadeAnimationSpec = contentFadeAnimationSpec,
   )
 }
