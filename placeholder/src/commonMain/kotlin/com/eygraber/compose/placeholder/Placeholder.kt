@@ -166,8 +166,8 @@ private class PlaceholderNode(
     targetState = visible
   }
 
-  private var contentAlpha: Float = 0F
-  private var placeholderAlpha: Float = 0F
+  private var contentAlpha: Float = if(visible) 0F else 1F
+  private var placeholderAlpha: Float = if(visible) 1F else 0F
   private var paint: Paint = Paint()
 
   // The current highlight animation progress
