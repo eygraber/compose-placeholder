@@ -26,13 +26,13 @@ repositories {
 
 dependencies {
   // If you're using Material, use compose-placeholder-material
-  implementation("com.eygraber:compose-placeholder-material:1.0.2")
+  implementation("com.eygraber:compose-placeholder-material:1.0.3")
 
   // If you're using Material 3, use compose-placeholder-material3
-  implementation("com.eygraber:compose-placeholder-material3:1.0.2")
+  implementation("com.eygraber:compose-placeholder-material3:1.0.3")
 
   // Otherwise use the foundation version
-  implementation("com.eygraber:compose-placeholder:1.0.2")
+  implementation("com.eygraber:compose-placeholder:1.0.3")
 }
 ```
 
@@ -46,7 +46,7 @@ repositories {
 }
 
 dependencies {
-  implementation("com.eygraber:compose-placeholder:1.0.3-SNAPSHOT-SNAPSHOT-SNAPSHOT-SNAPSHOT")
+  implementation("com.eygraber:compose-placeholder:1.0.4-SNAPSHOT-SNAPSHOT-SNAPSHOT-SNAPSHOT-SNAPSHOT")
 }
 ```
 
