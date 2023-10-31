@@ -16,7 +16,7 @@ detektEygraber = "1.0.11"
 dokka = "1.9.10"
 
 imageLoader = "1.6.8"
-kotlin = "1.9.10"
+kotlin = "1.9.20"
 
 kotest = "5.7.2"
 
