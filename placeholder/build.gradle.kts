@@ -1,5 +1,4 @@
 import com.eygraber.conventions.kotlin.kmp.androidUnitTest
-import com.eygraber.conventions.kotlin.kmp.jvmTest
 
 plugins {
   id("com.eygraber.conventions-kotlin-multiplatform")
@@ -18,7 +17,6 @@ kotlin {
 
   kmpTargets(
     project = project,
-    useDefaultTargetHierarchy = true,
     android = true,
     ios = true,
     jvm = true,

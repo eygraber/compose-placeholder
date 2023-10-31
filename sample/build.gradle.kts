@@ -9,7 +9,6 @@ plugins {
 kotlin {
   kmpTargets(
     project = project,
-    useDefaultTargetHierarchy = true,
     android = false,
     ios = false,
     jvm = true,
