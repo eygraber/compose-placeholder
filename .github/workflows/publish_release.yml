@@ -94,7 +94,7 @@ jobs:
 
       - name: Create tag
         id: create_tag
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.PUSH_PAT }}
           script: |
