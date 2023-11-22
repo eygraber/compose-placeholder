@@ -24,7 +24,6 @@ import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.composed
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.compositeOver
@@ -119,13 +118,11 @@ public fun Modifier.placeholder(
   highlight: PlaceholderHighlight? = null,
   placeholderFadeAnimationSpec: AnimationSpec<Float> = spring(),
   contentFadeAnimationSpec: AnimationSpec<Float> = spring(),
-): Modifier = composed {
-  Modifier.placeholder(
-    visible = visible,
-    color = if(color.isSpecified) color else PlaceholderDefaults.color(),
-    shape = shape ?: MaterialTheme.shapes.small,
-    highlight = highlight,
-    placeholderFadeAnimationSpec = placeholderFadeAnimationSpec,
-    contentFadeAnimationSpec = contentFadeAnimationSpec,
-  )
-}
+): Modifier = placeholder(
+  visible = visible,
+  color = if(color.isSpecified) color else PlaceholderDefaults.color(),
+  shape = shape ?: MaterialTheme.shapes.small,
+  highlight = highlight,
+  placeholderFadeAnimationSpec = placeholderFadeAnimationSpec,
+  contentFadeAnimationSpec = contentFadeAnimationSpec,
+)
