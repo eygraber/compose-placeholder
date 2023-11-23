@@ -44,7 +44,6 @@ import androidx.compose.ui.platform.InspectorInfo
 import androidx.compose.ui.unit.LayoutDirection
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 
 /**
@@ -259,31 +258,15 @@ private class PlaceholderNode(
 
   private fun CoroutineScope.runHighlightAnimation() {
     highlightAnimationsJob?.cancel()
-    highlightAnimationsJob = launch {
-      val infiniteAnimation = Animatable(0F)
-      val animationSpec = highlight?.animationSpec
 
-      val isEffectivelyVisible = visible || placeholderAlpha >= 0.01F
-      while(isActive && animationSpec != null && isEffectivelyVisible) {
-        // Run the optional animation spec and update the progress if the placeholder is visible
+    val isEffectivelyVisible = visible || placeholderAlpha >= 0.01F
+    val animationSpec = highlight?.animationSpec
+    if(isEffectivelyVisible && animationSpec != null) {
+      highlightAnimationsJob = launch {
+        val infiniteAnimation = Animatable(0F)
         infiniteAnimation.animateTo(1F, animationSpec) {
           highlightProgress = value
           invalidateDraw()
-          shouldAutoInvalidate
-        }
-
-        if(animationSpec.repeatMode == RepeatMode.Restart) {
-          infiniteAnimation.snapTo(0F)
-          infiniteAnimation.animateTo(1F, animationSpec) {
-            highlightProgress = value
-            invalidateDraw()
-          }
-        }
-        else if(animationSpec.repeatMode == RepeatMode.Reverse) {
-          infiniteAnimation.animateTo(0F, animationSpec) {
-            highlightProgress = value
-            invalidateDraw()
-          }
         }
       }
     }
