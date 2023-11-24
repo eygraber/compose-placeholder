@@ -16,7 +16,7 @@ detektEygraber = "1.0.11"
 dokka = "1.9.10"
 
 imageLoader = "1.7.1"
-kotlin = "1.9.20"
+kotlin = "1.9.21"
 
 kotest = "5.8.0"
 
@@ -39,7 +39,7 @@ buildscript-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", ver
 buildscript-publish = { module = "com.vanniktech:gradle-maven-publish-plugin", version.ref = "publish" }
 
 # note: the compiler version doesn't necessarily track with the regular jetbrains compose version
-compose-compilerJetbrains = "org.jetbrains.compose.compiler:compiler:1.5.3"
+compose-compilerJetbrains = "org.jetbrains.compose.compiler:compiler:1.5.4"
 compose-compilerJetpack = "androidx.compose.compiler:compiler:1.5.4"
 compose-uiUtil = { module = "org.jetbrains.compose.ui:ui-util", version.ref = "composeJetbrains" }
 
