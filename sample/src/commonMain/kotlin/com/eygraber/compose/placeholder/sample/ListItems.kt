@@ -36,6 +36,7 @@ import androidx.compose.ui.unit.dp
 /**
  * Simple list item row which displays an image and text.
  */
+@Suppress("ModifierReused")
 @Composable
 fun ListItem(
   painter: Painter,
