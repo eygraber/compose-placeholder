@@ -40,7 +40,7 @@ buildscript-publish = { module = "com.vanniktech:gradle-maven-publish-plugin", v
 
 # note: the compiler version doesn't necessarily track with the regular jetbrains compose version
 compose-compilerJetbrains = "org.jetbrains.compose.compiler:compiler:1.5.4"
-compose-compilerJetpack = "androidx.compose.compiler:compiler:1.5.4"
+compose-compilerJetpack = "androidx.compose.compiler:compiler:1.5.5"
 compose-uiUtil = { module = "org.jetbrains.compose.ui:ui-util", version.ref = "composeJetbrains" }
 
 detektCompose = { module = "io.nlopez.compose.rules:detekt", version.ref = "detektCompose" }
