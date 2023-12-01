@@ -236,6 +236,7 @@ private class PlaceholderNode(
 
       placeholderAnimation.animateTo(
         targetValue = if(visible) 1F else 0F,
+        placeholderFadeAnimationSpec,
       ) {
         val placeholderAlphaWas0 = placeholderAlpha < 0.01F
         placeholderAlpha = value
@@ -249,6 +250,7 @@ private class PlaceholderNode(
 
       contentAnimation.animateTo(
         targetValue = if(visible) 0F else 1F,
+        contentFadeAnimationSpec,
       ) {
         contentAlpha = value
         invalidateDraw()
