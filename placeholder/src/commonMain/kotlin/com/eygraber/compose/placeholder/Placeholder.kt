@@ -43,7 +43,6 @@ import androidx.compose.ui.node.invalidateDraw
 import androidx.compose.ui.platform.InspectorInfo
 import androidx.compose.ui.unit.LayoutDirection
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 /**
@@ -177,9 +176,6 @@ private class PlaceholderNode(
   private var lastLayoutDirection: LayoutDirection? = null
   private var lastOutline: Outline? = null
 
-  private var highlightAnimationsJob: Job? = null
-  private var alphaAnimationsJob: Job? = null
-
   fun updateVisible(visible: Boolean) {
     if(this.visible != visible) {
       this.visible = visible
@@ -229,11 +225,11 @@ private class PlaceholderNode(
     coroutineScope.runHighlightAnimation()
   }
 
-  private fun CoroutineScope.runAlphaAnimations() {
-    alphaAnimationsJob?.cancel()
-    alphaAnimationsJob = launch {
-      val placeholderAnimation = Animatable(placeholderAlpha)
+  private val placeholderAnimation = Animatable(placeholderAlpha)
+  private val contentAnimation = Animatable(contentAlpha)
 
+  private fun CoroutineScope.runAlphaAnimations() {
+    launch {
       placeholderAnimation.animateTo(
         targetValue = if(visible) 1F else 0F,
         placeholderFadeAnimationSpec,
@@ -245,9 +241,9 @@ private class PlaceholderNode(
         }
         invalidateDraw()
       }
+    }
 
-      val contentAnimation = Animatable(contentAlpha)
-
+    launch {
       contentAnimation.animateTo(
         targetValue = if(visible) 0F else 1F,
         contentFadeAnimationSpec,
@@ -258,14 +254,13 @@ private class PlaceholderNode(
     }
   }
 
-  private fun CoroutineScope.runHighlightAnimation() {
-    highlightAnimationsJob?.cancel()
+  private val infiniteAnimation = Animatable(0F)
 
+  private fun CoroutineScope.runHighlightAnimation() {
     val isEffectivelyVisible = visible || placeholderAlpha >= 0.01F
     val animationSpec = highlight?.animationSpec
     if(isEffectivelyVisible && animationSpec != null) {
-      highlightAnimationsJob = launch {
-        val infiniteAnimation = Animatable(0F)
+      launch {
         infiniteAnimation.animateTo(1F, animationSpec) {
           highlightProgress = value
           invalidateDraw()
