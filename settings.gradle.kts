@@ -52,7 +52,7 @@ dependencyResolutionManagement {
 
 plugins {
   id("com.eygraber.conventions.settings") version "0.0.57"
-  id("com.gradle.enterprise") version "3.15.1"
+  id("com.gradle.enterprise") version "3.16"
 }
 
 rootProject.name = "compose-placeholder"
