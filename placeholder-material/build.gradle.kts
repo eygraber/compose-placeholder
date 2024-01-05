@@ -11,8 +11,7 @@ android {
 }
 
 kotlin {
-  kmpTargets(
-    KmpTarget.Android,
+  defaultKmpTargets(
     project = project
   )
 
