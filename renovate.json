@@ -7,10 +7,7 @@
   "prHourlyLimit": 3,
   "packageRules": [
     {
-      "groupName": "GradleConventionsUpdates",
-      "matchDatasources": ["maven"],
-      "matchFiles": ["libs.versions.toml", "settings.gradle.kts"],
-      "matchUpdateTypes": ["major", "minor", "patch"],
+      "groupName": "gradle-conventions",
       "matchPackagePrefixes": ["com.eygraber.conventions"],
       "automerge": true
     },
