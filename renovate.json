@@ -11,10 +11,7 @@
       "matchDatasources": ["maven"],
       "matchFiles": ["libs.versions.toml", "settings.gradle.kts"],
       "matchUpdateTypes": ["major", "minor", "patch"],
-      "matchPackageNames": [
-        "com.eygraber.conventions.settings",
-        "com.eygraber.conventions:com.eygraber.conventions.gradle.plugin"
-      ],
+      "matchPackagePrefixes": ["com.eygraber.conventions"],
       "automerge": true
     },
     {
