@@ -9,11 +9,11 @@
     {
       "groupName": "GradleConventionsUpdates",
       "matchDatasources": ["maven"],
-      "depType": "dependencies",
       "matchFiles": ["libs.versions.toml", "settings.gradle.kts"],
       "matchUpdateTypes": ["major", "minor", "patch"],
-      "matchPackagePatterns": [
-        "com\\.eygraber\\.conventions.*"
+      "matchPackageNames": [
+        "com.eygraber.conventions.settings",
+        "com.eygraber.conventions:com.eygraber.conventions.gradle.plugin"
       ],
       "automerge": true
     },
