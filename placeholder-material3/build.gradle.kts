@@ -11,14 +11,9 @@ android {
 }
 
 kotlin {
-  explicitApi()
-
   kmpTargets(
-    project = project,
-    android = true,
-    ios = true,
-    jvm = true,
-    js = true
+    KmpTarget.Android,
+    project = project
   )
 
   sourceSets {

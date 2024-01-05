@@ -8,11 +8,9 @@ plugins {
 
 kotlin {
   kmpTargets(
+    KmpTarget.Jvm,
     project = project,
-    android = false,
-    ios = false,
-    jvm = true,
-    js = false
+    ignoreDefaultTargets = true
   )
 
   sourceSets {
