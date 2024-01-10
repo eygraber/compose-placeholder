@@ -31,10 +31,6 @@ gradleConventionsDefaults {
   }
 
   compose {
-    android(
-      compilerOverride = libs.compose.compilerJetpack
-    )
-
     multiplatform(
       compilerOverride = libs.compose.compilerJetbrains
     )
