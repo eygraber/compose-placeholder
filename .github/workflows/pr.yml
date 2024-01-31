@@ -29,15 +29,16 @@ jobs:
       - uses: gradle/wrapper-validation-action@v1.1.0
 
       - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2.12.0
+        uses: gradle/actions/setup-gradle@v3
         with:
           gradle-version: wrapper
+          gradle-home-cache-cleanup: true
 
       - name: Run detekt
         run: ./detekt
 
   detektIos:
-    runs-on: macos-latest
+    runs-on: macos-14
     steps:
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
 
@@ -49,9 +50,10 @@ jobs:
       - uses: gradle/wrapper-validation-action@v1.1.0
 
       - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2.12.0
+        uses: gradle/actions/setup-gradle@v3
         with:
           gradle-version: wrapper
+          gradle-home-cache-cleanup: true
 
       - name: Build for iOS
         run: ./gradlew detektIosMain
@@ -69,9 +71,10 @@ jobs:
       - uses: gradle/wrapper-validation-action@v1.1.0
 
       - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2.12.0
+        uses: gradle/actions/setup-gradle@v3
         with:
           gradle-version: wrapper
+          gradle-home-cache-cleanup: true
 
       - name: Run checks
         run: ./gradlew lintRelease
@@ -89,9 +92,10 @@ jobs:
       - uses: gradle/wrapper-validation-action@v1.1.0
 
       - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2.12.0
+        uses: gradle/actions/setup-gradle@v3
         with:
           gradle-version: wrapper
+          gradle-home-cache-cleanup: true
 
       - name: Run checks
         run: ./gradlew allTests
