@@ -19,7 +19,7 @@ jobs:
           token: ${{ secrets.PUSH_PAT }}
 
       - name: Generate versions
-        uses: HardNorth/github-version-generate@v1.3.0
+        uses: HardNorth/github-version-generate@v1.4.0
         with:
           version-source: file
           version-file: ${{ env.VERSION_FILE }}
@@ -56,7 +56,7 @@ jobs:
           token: ${{ secrets.PUSH_PAT }}
 
       - name: Generate versions
-        uses: HardNorth/github-version-generate@v1.3.0
+        uses: HardNorth/github-version-generate@v1.4.0
         with:
           version-source: file
           version-file: ${{ env.VERSION_FILE }}
