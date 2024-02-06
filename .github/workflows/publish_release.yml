@@ -106,7 +106,7 @@ jobs:
 
       - name: Create release
         id: create_release
-        uses: ncipollo/release-action@v1.13.0
+        uses: ncipollo/release-action@v1.14.0
         with:
           body: ${{ steps.build_changelog.outputs.changelog }}
           name: Release ${{ env.RELEASE_VERSION }}
