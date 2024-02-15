@@ -20,7 +20,7 @@ kotlin = "1.9.22"
 
 kotest = "5.8.0"
 
-kotlinx-coroutines = "1.7.3"
+kotlinx-coroutines = "1.8.0"
 
 ktlint = "1.1.1"
 
