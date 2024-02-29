@@ -10,6 +10,7 @@ ktlint_code_style = android_studio
 ktlint_experimental = enabled
 ktlint_ignore_back_ticked_identifier = true
 ktlint_standard_annotation = disabled
+ktlint_standard_blank-line-between-when-conditions = disabled
 ktlint_standard_class-signature = disabled
 ktlint_standard_comment-wrapping = disabled
 ktlint_standard_filename = disabled
