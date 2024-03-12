@@ -24,7 +24,7 @@ kotlinx-coroutines = "1.8.0"
 
 ktlint = "1.2.1"
 
-publish = "0.27.0"
+publish = "0.28.0"
 
 [plugins]
 conventions = { id = "com.eygraber.conventions", version.ref = "conventions" }
