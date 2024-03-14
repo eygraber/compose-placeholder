@@ -43,10 +43,10 @@ import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
 import kotlin.math.roundToInt
 
-@OptIn(ExperimentalTestApi::class)
 /**
  * This is only necessary until https://github.com/robolectric/robolectric/issues/8071 is resolved
  */
+@OptIn(ExperimentalTestApi::class)
 internal fun SemanticsNodeInteraction.captureToImage(): ImageBitmap {
   val node = fetchSemanticsNode("Failed to capture a node to bitmap.")
   // Validate we are in popup
