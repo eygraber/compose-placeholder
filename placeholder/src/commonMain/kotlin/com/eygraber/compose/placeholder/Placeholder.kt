@@ -164,9 +164,10 @@ private class PlaceholderNode(
     targetState = visible
   }
 
+  private val paint: Paint = Paint()
+
   private var contentAlpha: Float = if(visible) 0F else 1F
   private var placeholderAlpha: Float = if(visible) 1F else 0F
-  private var paint: Paint = Paint()
 
   // The current highlight animation progress
   private var highlightProgress: Float = 0F
