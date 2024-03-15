@@ -105,11 +105,11 @@ jobs:
           gradle-version: wrapper
           gradle-home-cache-cleanup: true
 
-      - name: Run checks
+      - name: Run Android lint
         run: ./gradlew lintRelease
 
   test:
-    runs-on: ubuntu-latest
+    runs-on: macos-14
     steps:
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
 
@@ -126,7 +126,7 @@ jobs:
           gradle-version: wrapper
           gradle-home-cache-cleanup: true
 
-      - name: Run checks
+      - name: Run tests
         run: ./gradlew allTests
 
 env:
