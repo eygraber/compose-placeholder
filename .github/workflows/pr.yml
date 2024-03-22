@@ -26,7 +26,7 @@ jobs:
           distribution: 'zulu'
           java-version-file: .ci-java-version
 
-      - uses: gradle/wrapper-validation-action@v2.1.1
+      - uses: gradle/wrapper-validation-action@v2.1.2
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
@@ -47,7 +47,7 @@ jobs:
           distribution: 'zulu'
           java-version-file: .ci-java-version
 
-      - uses: gradle/wrapper-validation-action@v2.1.1
+      - uses: gradle/wrapper-validation-action@v2.1.2
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
@@ -68,7 +68,7 @@ jobs:
           distribution: 'zulu'
           java-version-file: .ci-java-version
 
-      - uses: gradle/wrapper-validation-action@v2.1.1
+      - uses: gradle/wrapper-validation-action@v2.1.2
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
@@ -97,7 +97,7 @@ jobs:
           distribution: 'zulu'
           java-version-file: .ci-java-version
 
-      - uses: gradle/wrapper-validation-action@v2.1.1
+      - uses: gradle/wrapper-validation-action@v2.1.2
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
@@ -118,7 +118,7 @@ jobs:
           distribution: 'zulu'
           java-version-file: .ci-java-version
 
-      - uses: gradle/wrapper-validation-action@v2.1.1
+      - uses: gradle/wrapper-validation-action@v2.1.2
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
