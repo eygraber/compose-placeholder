@@ -10,9 +10,7 @@ jobs:
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
 
       - name: Danger
-        uses: docker://ghcr.io/danger/danger-kotlin:1.3.0
-        with:
-            args: --failOnErrors --no-publish-check
+        uses: danger/kotlin@1.3.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
