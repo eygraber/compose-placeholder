@@ -7,5 +7,8 @@ style:
     active: false
 
 Compose:
+  Material2:
+    active: false
   ModifierMissing:
     active: false
+    
