@@ -61,7 +61,7 @@ rootProject.name = "compose-placeholder"
 include(":placeholder")
 include(":placeholder-material")
 include(":placeholder-material3")
-include(":sample")
+include(":sample-code")
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
