@@ -62,6 +62,9 @@ include(":placeholder")
 include(":placeholder-material")
 include(":placeholder-material3")
 include(":sample-code")
+include(":samples:material")
+include(":samples:material3")
+include(":samples:placeholder")
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 

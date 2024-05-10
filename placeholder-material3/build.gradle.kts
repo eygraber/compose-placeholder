@@ -19,7 +19,7 @@ kotlin {
     commonMain {
       dependencies {
         api(projects.placeholder)
-        implementation(compose.material3)
+        api(compose.material3)
       }
     }
   }
