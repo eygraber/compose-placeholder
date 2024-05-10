@@ -6,6 +6,7 @@ plugins {
   id("com.eygraber.conventions-kotlin-library")
   id("com.eygraber.conventions-compose-jetbrains")
   id("com.eygraber.conventions-detekt")
+  alias(libs.plugins.baselineprofile)
 }
 
 group = "samples-placeholder"
@@ -47,6 +48,9 @@ dependencies {
   implementation(compose.foundation)
 
   implementation(libs.androidx.activity.compose)
+  implementation(libs.androidx.baseline.profiles.profileinstaller)
+
+  baselineProfile(projects.baselineProfiles.placeholder)
 }
 
 gradleConventions.kotlin {
