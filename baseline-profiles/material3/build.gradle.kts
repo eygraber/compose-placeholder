@@ -24,11 +24,8 @@ android {
 
   targetProjectPath = ":samples:material3"
 
-  // This code creates the gradle managed device used to generate baseline profiles.
-  // To use GMD please invoke generation through the command line:
-  // ./gradlew :samples:placeholder:generateBaselineProfile
   testOptions.managedDevices.devices {
-    create<ManagedVirtualDevice>("pixel6Api34") {
+    register<ManagedVirtualDevice>("pixel6Api34") {
       device = "Pixel 6"
       apiLevel = 34
       systemImageSource = "google"
