@@ -19,7 +19,7 @@ You only need to use one of the libraries, and most apps should use **Placeholde
 
 ## Gradle
 
-```kotlin
+```gradle
 repositories {
   mavenCentral()
 }
@@ -40,13 +40,13 @@ dependencies {
 
 Snapshots of the current development version of this library are available, which track the latest commit.
 
-```kotlin
+```gradle
 repositories {
   maven(url = "https://s01.oss.sonatype.org/content/repositories/snapshots")
 }
 
 dependencies {
-  implementation("com.eygraber:compose-placeholder:1.0.9-SNAPSHOT-SNAPSHOT-SNAPSHOT-SNAPSHOT-SNAPSHOT-SNAPSHOT-SNAPSHOT-SNAPSHOT-SNAPSHOT-SNAPSHOT")
+  implementation("com.eygraber:compose-placeholder:1.0.9-SNAPSHOT")
 }
 ```
 
@@ -58,34 +58,34 @@ At the most basic usage, the modifier will draw a shape over your composable con
 
 ### "Placeholder Material"
 
-    ``` kotlin
-    import com.eygraber.compose.placeholder.material.placeholder
+  ```kotlin
+  import com.eygraber.compose.placeholder.material.placeholder
 
-    Text(
-        text = "Content to display after content has loaded",
-        modifier = Modifier
-            .padding(16.dp)
-            .placeholder(visible = true)
-    )
-    ```
+  Text(
+      text = "Content to display after content has loaded",
+      modifier = Modifier
+          .padding(16.dp)
+          .placeholder(visible = true)
+  )
+  ```
 
 ### "Placeholder Foundation"
 
-    ``` kotlin
-    import com.eygraber.compose.placeholder.placeholder
+  ```kotlin
+  import com.eygraber.compose.placeholder.placeholder
 
-    Text(
-        text = "Content to display after content has loaded",
-        modifier = Modifier
-            .padding(16.dp)
-            .placeholder(
-                visible = true,
-                color = Color.Gray,
-                // optional, defaults to RectangleShape
-                shape = RoundedCornerShape(4.dp),
-            )
-    )
-    ```
+  Text(
+      text = "Content to display after content has loaded",
+      modifier = Modifier
+          .padding(16.dp)
+          .placeholder(
+              visible = true,
+              color = Color.Gray,
+              // optional, defaults to RectangleShape
+              shape = RoundedCornerShape(4.dp),
+          )
+  )
+  ```
 
 ## Placeholder highlights
 
@@ -99,44 +99,44 @@ This highlight fades a color over the entire placeholder in and out.
 
 ### "Placeholder Material"
 
-    ``` kotlin
-    import com.eygraber.compose.placeholder.PlaceholderHighlight
-    import com.eygraber.compose.placeholder.material.placeholder
-    import com.eygraber.compose.placeholder.material.fade
+  ```kotlin
+  import com.eygraber.compose.placeholder.PlaceholderHighlight
+  import com.eygraber.compose.placeholder.material.placeholder
+  import com.eygraber.compose.placeholder.material.fade
 
-    Text(
-        text = "Content to display after content has loaded",
-        modifier = Modifier
-            .padding(16.dp)
-            .placeholder(
-                visible = true,
-                highlight = PlaceholderHighlight.fade(),
-            )
-    )
-    ```
+  Text(
+      text = "Content to display after content has loaded",
+      modifier = Modifier
+          .padding(16.dp)
+          .placeholder(
+              visible = true,
+              highlight = PlaceholderHighlight.fade(),
+          )
+  )
+  ```
 
 ### "Placeholder Foundation"
 
-    ``` kotlin
-    import com.eygraber.compose.placeholder.PlaceholderHighlight
-    import com.eygraber.compose.placeholder.placeholder
-    import com.eygraber.compose.placeholder.fade
+  ```kotlin
+  import com.eygraber.compose.placeholder.PlaceholderHighlight
+  import com.eygraber.compose.placeholder.placeholder
+  import com.eygraber.compose.placeholder.fade
 
-    Text(
-        text = "Content to display after content has loaded",
-        modifier = Modifier
-            .padding(16.dp)
-            .placeholder(
-                visible = true,
-                color = Color.Gray,
-                // optional, defaults to RectangleShape
-                shape = RoundedCornerShape(4.dp),
-                highlight = PlaceholderHighlight.fade(
-                    highlightColor = Color.White,
-                ),
-            )
-    )
-    ```
+  Text(
+      text = "Content to display after content has loaded",
+      modifier = Modifier
+          .padding(16.dp)
+          .placeholder(
+              visible = true,
+              color = Color.Gray,
+              // optional, defaults to RectangleShape
+              shape = RoundedCornerShape(4.dp),
+              highlight = PlaceholderHighlight.fade(
+                  highlightColor = Color.White,
+              ),
+          )
+  )
+  ```
 
 ### Shimmer
 
@@ -146,44 +146,44 @@ This displays a gradient shimmer effect which emanates from the top-start corner
 
 ### "Placeholder Material"
 
-    ``` kotlin
-    import com.eygraber.compose.placeholder.PlaceholderHighlight
-    import com.eygraber.compose.placeholder.material.placeholder
-    import com.eygraber.compose.placeholder.material.shimmer
+  ```kotlin
+  import com.eygraber.compose.placeholder.PlaceholderHighlight
+  import com.eygraber.compose.placeholder.material.placeholder
+  import com.eygraber.compose.placeholder.material.shimmer
 
-    Text(
-        text = "Content to display after content has loaded",
-        modifier = Modifier
-            .padding(16.dp)
-            .placeholder(
-                visible = true,
-                highlight = PlaceholderHighlight.shimmer(),
-            )
-    )
-    ```
+  Text(
+      text = "Content to display after content has loaded",
+      modifier = Modifier
+          .padding(16.dp)
+          .placeholder(
+              visible = true,
+              highlight = PlaceholderHighlight.shimmer(),
+          )
+  )
+  ```
 
 ### "Placeholder Foundation"
 
-    ``` kotlin
-    import com.eygraber.compose.placeholder.PlaceholderHighlight
-    import com.eygraber.compose.placeholder.placeholder
-    import com.eygraber.compose.placeholder.shimmer
+  ```kotlin
+  import com.eygraber.compose.placeholder.PlaceholderHighlight
+  import com.eygraber.compose.placeholder.placeholder
+  import com.eygraber.compose.placeholder.shimmer
 
-    Text(
-        text = "Content to display after content has loaded",
-        modifier = Modifier
-            .padding(16.dp)
-            .placeholder(
-                visible = true,
-                color = Color.Gray,
-                // optional, defaults to RectangleShape
-                shape = RoundedCornerShape(4.dp),
-                highlight = PlaceholderHighlight.shimmer(
-                    highlightColor = Color.White,
-                ),
-            )
-    )
-    ```
+  Text(
+      text = "Content to display after content has loaded",
+      modifier = Modifier
+          .padding(16.dp)
+          .placeholder(
+              visible = true,
+              color = Color.Gray,
+              // optional, defaults to RectangleShape
+              shape = RoundedCornerShape(4.dp),
+              highlight = PlaceholderHighlight.shimmer(
+                  highlightColor = Color.White,
+              ),
+          )
+  )
+  ```
 
 ## Contributions
 
