@@ -59,6 +59,7 @@ plugins {
 rootProject.name = "compose-placeholder"
 
 include(":baseline-profiles:material")
+include(":baseline-profiles:material3")
 include(":baseline-profiles:placeholder")
 include(":placeholder")
 include(":placeholder-material")
