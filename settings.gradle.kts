@@ -40,13 +40,13 @@ dependencyResolutionManagement {
       includeMavenCentral = true,
       includeMavenCentralSnapshots = true,
       includeGoogle = true,
-      includeJetbrainsCompose = false
+      includeJetbrainsComposeDev = false
     )
   }
 }
 
 plugins {
-  id("com.eygraber.conventions.settings") version "0.0.73"
+  id("com.eygraber.conventions.settings") version "0.0.74"
   id("com.gradle.develocity") version "3.17.4"
 }
 
