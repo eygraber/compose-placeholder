@@ -7,7 +7,7 @@ android-sdk-min = "21"
 
 composeJetbrains = "1.6.10"
 
-conventions = "0.0.71"
+conventions = "0.0.73"
 
 detekt = "1.23.6"
 detektCompose = "0.4.1"
@@ -16,7 +16,7 @@ detektEygraber = "1.0.11"
 dokka = "1.9.20"
 
 imageLoader = "1.7.8"
-kotlin = "1.9.24"
+kotlin = "2.0.0"
 
 kotest = "5.9.0"
 
@@ -32,14 +32,13 @@ conventions = { id = "com.eygraber.conventions", version.ref = "conventions" }
 [libraries]
 buildscript-android = { module = "com.android.tools.build:gradle", version.ref = "agp" }
 buildscript-androidCacheFix = { module = "gradle.plugin.org.gradle.android:android-cache-fix-gradle-plugin", version = "3.0.1" }
-buildscript-compose = { module = "org.jetbrains.compose:compose-gradle-plugin", version.ref = "composeJetbrains" }
+buildscript-compose-compiler = { module = "org.jetbrains.kotlin:compose-compiler-gradle-plugin", version.ref = "kotlin" }
+buildscript-compose-jetbrains = { module = "org.jetbrains.compose:compose-gradle-plugin", version.ref = "composeJetbrains" }
 buildscript-detekt = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "detekt" }
 buildscript-dokka = { module = "org.jetbrains.dokka:dokka-gradle-plugin", version.ref = "dokka" }
 buildscript-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 buildscript-publish = { module = "com.vanniktech:gradle-maven-publish-plugin", version.ref = "publish" }
 
-# note: the compiler version doesn't necessarily track with the regular jetbrains compose version
-compose-compilerJetbrains = "org.jetbrains.compose.compiler:compiler:1.5.14"
 compose-uiUtil = { module = "org.jetbrains.compose.ui:ui-util", version.ref = "composeJetbrains" }
 
 detektCompose = { module = "io.nlopez.compose.rules:detekt", version.ref = "detektCompose" }
