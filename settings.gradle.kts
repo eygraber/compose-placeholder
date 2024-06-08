@@ -52,10 +52,16 @@ plugins {
 
 rootProject.name = "compose-placeholder"
 
+include(":baseline-profiles:material")
+include(":baseline-profiles:material3")
+include(":baseline-profiles:placeholder")
 include(":placeholder")
 include(":placeholder-material")
 include(":placeholder-material3")
-include(":sample")
+include(":sample-code")
+include(":samples:material")
+include(":samples:material3")
+include(":samples:placeholder")
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 

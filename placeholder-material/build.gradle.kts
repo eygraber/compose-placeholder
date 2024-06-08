@@ -4,10 +4,15 @@ plugins {
   id("com.eygraber.conventions-compose-jetbrains")
   id("com.eygraber.conventions-detekt")
   id("com.eygraber.conventions-publish-maven-central")
+  alias(libs.plugins.baselineprofile)
 }
 
 android {
   namespace = "com.eygraber.compose.placeholder.material"
+
+  dependencies {
+    baselineProfile(projects.baselineProfiles.material)
+  }
 }
 
 kotlin {
@@ -19,8 +24,14 @@ kotlin {
     commonMain {
       dependencies {
         api(projects.placeholder)
-        implementation(compose.material)
+        api(compose.material)
       }
     }
+  }
+}
+
+baselineProfile {
+  filter {
+    include("com.eygraber.compose.placeholder.material.**")
   }
 }

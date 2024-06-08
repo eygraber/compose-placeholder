@@ -6,6 +6,7 @@ plugins {
   id("com.eygraber.conventions-compose-jetbrains")
   id("com.eygraber.conventions-detekt")
   id("com.eygraber.conventions-publish-maven-central")
+  alias(libs.plugins.baselineprofile)
 }
 
 android {
@@ -60,5 +61,15 @@ android {
       it.useJUnit()
     }
     animationsDisabled = true
+  }
+
+  dependencies {
+    baselineProfile(projects.baselineProfiles.placeholder)
+  }
+}
+
+baselineProfile {
+  filter {
+    include("com.eygraber.compose.placeholder.**")
   }
 }
