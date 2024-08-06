@@ -31,11 +31,9 @@ jobs:
           java-version-file: .ci-java-version
 
       - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v3
+        uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: wrapper
-          gradle-home-cache-cleanup: true
-          validate-wrappers: true
 
       - name: Publish the artifacts
         env:
