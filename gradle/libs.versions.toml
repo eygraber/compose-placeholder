@@ -9,7 +9,7 @@ composeJetbrains = "1.6.11"
 
 conventions = "0.0.77"
 
-detekt = "1.23.6"
+detekt = "1.23.7"
 detektCompose = "0.4.11"
 detektEygraber = "1.0.11"
 
