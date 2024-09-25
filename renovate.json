@@ -12,6 +12,14 @@
       "automerge": true
     },
     {
+      "groupName": "gradle-develocity-plugin",
+      "matchPackagePrefixes": ["com.gradle.develocity"],
+      "automerge": true,
+      "registryUrls": [
+        "https://plugins.gradle.org/m2"
+      ]
+    },
+    {
       "matchDatasources": ["maven"],
       "depType": "dependencies",
       "registryUrls": [
