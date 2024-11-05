@@ -22,7 +22,7 @@ kotest = "5.9.1"
 
 kotlinx-coroutines = "1.9.0"
 
-ktlint = "1.4.0"
+ktlint = "1.4.1"
 
 publish = "0.30.0"
 
