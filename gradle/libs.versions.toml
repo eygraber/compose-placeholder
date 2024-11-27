@@ -7,7 +7,7 @@ android-sdk-min = "21"
 
 composeJetbrains = "1.7.1"
 
-conventions = "0.0.78"
+conventions = "0.0.79"
 
 detekt = "1.23.7"
 detektCompose = "0.4.19"
