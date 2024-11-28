@@ -47,7 +47,8 @@ gradleConventionsDefaults {
 
 gradleConventionsKmpDefaults {
   webOptions = webOptions.copy(
-    isNodeEnabled = false
+    isNodeEnabled = false,
+    isBrowserEnabled = true,
   )
 
   targets(
