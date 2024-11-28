@@ -11,7 +11,7 @@ env:
 
 jobs:
   publish_artifacts:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
@@ -41,23 +41,6 @@ jobs:
           ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.SONATYPE_NEXUS_PASSWORD }}
           ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.ARTIFACT_SIGNING_PRIVATE_KEY }}
         run: ./gradlew publishAllPublicationsToMavenCentralRepository -Pversion=${{ env.RELEASE_VERSION }}
-
-  publish_release:
-    needs: publish_artifacts
-
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.PUSH_PAT }}
-
-      - name: Generate versions
-        uses: HardNorth/github-version-generate@v1
-        with:
-          version-source: file
-          version-file: ${{ env.VERSION_FILE }}
-          version-file-extraction-pattern: ${{ env.VERSION_EXTRACT_PATTERN }}
 
       - name: Create, checkout, and push release branch
         run: |
@@ -122,10 +105,13 @@ jobs:
             sed -i -E -e 's/(compose-placeholder.*:)[0-9]+\.[0-9]+\.[0-9]+"/\1${{ env.RELEASE_VERSION }}"/g' README.md && \
             sed -i -E -e 's/(compose-placeholder.*:)[0-9]+\.[0-9]+\.[0-9]+-SNAPSHOT/\1${{ env.NEXT_VERSION }}-SNAPSHOT/g' README.md
 
+      - name: Update package-lock.json if needed
+        run: ./gradlew kotlinUpgradePackageLock --no-build-cache --no-configuration-cache --rerun-tasks
+
       - name: Commit next dev version
         id: commit_next_dev
         uses: EndBug/add-and-commit@v9
         with:
-          add: "['gradle.properties', 'README.md']"
+          add: "['gradle.properties', 'README.md', 'kotlin-js-store/package-lock.json']"
           default_author: github_actions
           message: "Prepare next dev version"
