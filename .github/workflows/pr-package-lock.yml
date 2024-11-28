@@ -1,0 +1,38 @@
+name: Upgrade Package Lock
+
+on:
+  pull_request
+
+jobs:
+  upgrade_package_lock:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.ref }}
+          token: ${{ secrets.PUSH_PAT }}
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version-file: .ci-java-version
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: wrapper
+
+      - name: Run assemble task
+        run: ./gradlew kotlinUpgradePackageLock --rerun-tasks
+
+      - name: Commit package lock changes
+        id: commit_package_lock_changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          add: "['kotlin-js-store/package-lock.json']"
+          default_author: github_actions
+          message: "Upgrade package lock"
+
+env:
+  GRADLE_OPTS: -Dorg.gradle.daemon=false -Dkotlin.incremental=false -Dorg.gradle.jvmargs="-Xmx16g -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8 -XX:MaxMetaspaceSize=1024m"
