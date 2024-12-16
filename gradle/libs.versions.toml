@@ -13,7 +13,7 @@ detekt = "1.23.7"
 detektCompose = "0.4.22"
 detektEygraber = "1.0.11"
 
-dokka = "1.9.20"
+dokka = "2.0.0"
 
 imageLoader = "1.9.0"
 kotlin = "2.1.0"
