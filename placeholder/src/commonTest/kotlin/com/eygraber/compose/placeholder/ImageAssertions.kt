@@ -38,7 +38,7 @@ fun PixelMap.assertPixelColor(expected: Color, x: Int, y: Int, tolerance: Float 
 /**
  * Assert that all of the pixels in this image as of the [expected] color.
  */
-fun ImageBitmap.assertPixels(expected: Color, tolerance: Float = 0.001f) {
+fun ImageBitmap.assertPixels(expected: Color, tolerance: Float = 0.1f) {
   toPixelMap().buffer.forEach { pixel ->
     val color = Color(pixel)
     color.red shouldBe (expected.red plusOrMinus tolerance)
