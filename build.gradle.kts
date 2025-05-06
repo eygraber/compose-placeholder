@@ -40,7 +40,7 @@ gradleConventionsDefaults {
   }
 
   kotlin {
-    jvmTargetVersion = JvmTarget.JVM_1_8
+    jvmTargetVersion = JvmTarget.JVM_11
     explicitApiMode = ExplicitApiMode.Strict
   }
 }

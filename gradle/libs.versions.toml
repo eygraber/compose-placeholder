@@ -1,11 +1,11 @@
 [versions]
 agp = "8.9.2"
 
-android-sdk-compile = "34"
-android-sdk-target = "34"
+android-sdk-compile = "35"
+android-sdk-target = "35"
 android-sdk-min = "21"
 
-composeJetbrains = "1.7.3"
+composeJetbrains = "1.8.0"
 
 conventions = "0.0.82"
 
