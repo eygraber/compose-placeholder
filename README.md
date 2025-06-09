@@ -36,19 +36,7 @@ dependencies {
 }
 ```
 
-### Library Snapshots
-
-Snapshots of the current development version of this library are available, which track the latest commit.
-
-```gradle
-repositories {
-  maven(url = "https://s01.oss.sonatype.org/content/repositories/snapshots")
-}
-
-dependencies {
-  implementation("com.eygraber:compose-placeholder:1.0.12-SNAPSHOT-SNAPSHOT-SNAPSHOT-SNAPSHOT")
-}
-```
+Snapshots are available [here](https://central.sonatype.org/publish/publish-portal-snapshots/#consuming-via-gradle).
 
 ## Basic usage
 
