@@ -1,5 +1,5 @@
+import com.eygraber.conventions.compose.cmpTest
 import org.jetbrains.compose.ExperimentalComposeLibrary
-import org.jetbrains.kotlin.gradle.targets.js.testing.KotlinJsTest
 
 plugins {
   id("com.eygraber.conventions-kotlin-multiplatform")
@@ -18,33 +18,40 @@ kotlin {
     project = project
   )
 
+  js {
+    browser {
+      testTask {
+        enabled = false
+      }
+    }
+  }
+
   sourceSets {
-    commonMain {
-      dependencies {
-        implementation(compose.foundation)
-        implementation(libs.compose.uiUtil)
-        implementation(libs.kotlinx.coroutines.core)
-      }
+    commonMain.dependencies {
+      implementation(compose.foundation)
+      implementation(libs.compose.uiUtil)
+      implementation(libs.kotlinx.coroutines.core)
     }
 
-    commonTest {
-      dependencies {
-        implementation(kotlin("test"))
+    commonTest.dependencies {
+      implementation(kotlin("test"))
 
-        implementation(libs.kotlinx.coroutines.test)
-        implementation(libs.test.kotest.assertions)
+      implementation(libs.kotlinx.coroutines.test)
+      implementation(libs.test.kotest.assertions)
 
-        @OptIn(ExperimentalComposeLibrary::class)
-        implementation(compose.uiTest)
-      }
+      @OptIn(ExperimentalComposeLibrary::class)
+      implementation(compose.uiTest)
     }
 
-    androidUnitTest {
-      dependencies {
-        implementation(libs.test.compose.android.uiJunit)
-        implementation(libs.test.compose.android.uiTestManifest)
-        implementation(libs.test.robolectric)
-      }
+    cmpTest.dependencies {
+      @OptIn(ExperimentalComposeLibrary::class)
+      implementation(compose.uiTest)
+    }
+
+    androidUnitTest.dependencies {
+      implementation(libs.test.compose.android.uiJunit)
+      implementation(libs.test.compose.android.uiTestManifest)
+      implementation(libs.test.robolectric)
     }
 
     jvmTest {
@@ -54,12 +61,6 @@ kotlin {
       }
     }
   }
-}
-
-// needed until captureToImage is supported on non-JVM targets
-// since we don't have native or web tests
-tasks.withType<AbstractTestTask>().configureEach {
-  failOnNoDiscoveredTests = false
 }
 
 android {
