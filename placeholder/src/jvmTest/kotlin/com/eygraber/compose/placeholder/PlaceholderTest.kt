@@ -15,6 +15,8 @@
  * limitations under the License.
  */
 
+@file:OptIn(ExperimentalTestApi::class)
+
 package com.eygraber.compose.placeholder
 
 import androidx.compose.animation.core.InfiniteRepeatableSpec
@@ -38,41 +40,38 @@ import androidx.compose.ui.platform.InspectableValue
 import androidx.compose.ui.platform.ValueElement
 import androidx.compose.ui.platform.isDebugInspectorInfoEnabled
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.test.assertHeightIsEqualTo
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertWidthIsEqualTo
 import androidx.compose.ui.test.captureToImage
-import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
+import androidx.compose.ui.test.runComposeUiTest
 import androidx.compose.ui.unit.dp
 import io.kotest.matchers.sequences.shouldContainExactly
 import io.kotest.matchers.shouldBe
-import org.junit.After
-import org.junit.Before
-import org.junit.Rule
-import org.junit.Test
+import kotlin.test.AfterTest
+import kotlin.test.BeforeTest
+import kotlin.test.Test
 
-class DesktopPlaceholderTest {
-  @get:Rule
-  val composeTestRule = createComposeRule()
-
+class PlaceholderTest {
   private val contentTag = "Content"
 
-  @Before
+  @BeforeTest
   fun before() {
     isDebugInspectorInfoEnabled = true
   }
 
-  @After
+  @AfterTest
   fun after() {
     isDebugInspectorInfoEnabled = false
   }
 
   @Test
-  fun placeholder_switchVisible1() {
+  fun placeholder_switchVisible1() = runComposeUiTest {
     var visible by mutableStateOf(true)
 
-    composeTestRule.setContent {
+    setContent {
       Box(
         Modifier
           .size(128.dp)
@@ -82,7 +81,7 @@ class DesktopPlaceholderTest {
       )
     }
 
-    composeTestRule.onNodeWithTag(contentTag)
+    onNodeWithTag(contentTag)
       .assertIsDisplayed()
       .assertWidthIsEqualTo(128.dp)
       .assertHeightIsEqualTo(128.dp)
@@ -91,7 +90,7 @@ class DesktopPlaceholderTest {
 
     visible = false
 
-    composeTestRule.onNodeWithTag(contentTag)
+    onNodeWithTag(contentTag)
       .assertIsDisplayed()
       .assertWidthIsEqualTo(128.dp)
       .assertHeightIsEqualTo(128.dp)
@@ -100,10 +99,10 @@ class DesktopPlaceholderTest {
   }
 
   @Test
-  fun placeholder_switchVisible2() {
+  fun placeholder_switchVisible2() = runComposeUiTest {
     var visible by mutableStateOf(true)
 
-    composeTestRule.setContent {
+    setContent {
       Box(
         Modifier
           .size(128.dp)
@@ -117,7 +116,7 @@ class DesktopPlaceholderTest {
       )
     }
 
-    composeTestRule.onNodeWithTag(contentTag)
+    onNodeWithTag(contentTag)
       .assertIsDisplayed()
       .assertWidthIsEqualTo(128.dp)
       .assertHeightIsEqualTo(128.dp)
@@ -126,7 +125,7 @@ class DesktopPlaceholderTest {
 
     visible = false
 
-    composeTestRule.onNodeWithTag(contentTag)
+    onNodeWithTag(contentTag)
       .assertIsDisplayed()
       .assertWidthIsEqualTo(128.dp)
       .assertHeightIsEqualTo(128.dp)
@@ -135,10 +134,10 @@ class DesktopPlaceholderTest {
   }
 
   @Test
-  fun placeholder_switchColor() {
+  fun placeholder_switchColor() = runComposeUiTest {
     var color by mutableStateOf(Color.Red)
 
-    composeTestRule.setContent {
+    setContent {
       Box(
         Modifier
           .size(128.dp)
@@ -148,7 +147,7 @@ class DesktopPlaceholderTest {
       )
     }
 
-    composeTestRule.onNodeWithTag(contentTag)
+    onNodeWithTag(contentTag)
       .assertIsDisplayed()
       .assertWidthIsEqualTo(128.dp)
       .assertHeightIsEqualTo(128.dp)
@@ -157,7 +156,7 @@ class DesktopPlaceholderTest {
 
     color = Color.Blue
 
-    composeTestRule.onNodeWithTag(contentTag)
+    onNodeWithTag(contentTag)
       .assertIsDisplayed()
       .assertWidthIsEqualTo(128.dp)
       .assertHeightIsEqualTo(128.dp)
@@ -166,10 +165,10 @@ class DesktopPlaceholderTest {
   }
 
   @Test
-  fun placeholder_switchAnimatedBrush() {
+  fun placeholder_switchAnimatedBrush() = runComposeUiTest {
     var animatedBrush by mutableStateOf(Solid(Color.Red))
 
-    composeTestRule.setContent {
+    setContent {
       Box(
         Modifier
           .size(128.dp)
@@ -183,7 +182,7 @@ class DesktopPlaceholderTest {
       )
     }
 
-    composeTestRule.onNodeWithTag(contentTag)
+    onNodeWithTag(contentTag)
       .assertIsDisplayed()
       .assertWidthIsEqualTo(128.dp)
       .assertHeightIsEqualTo(128.dp)
@@ -192,7 +191,7 @@ class DesktopPlaceholderTest {
 
     animatedBrush = Solid(Color.Blue)
 
-    composeTestRule.onNodeWithTag(contentTag)
+    onNodeWithTag(contentTag)
       .assertIsDisplayed()
       .assertWidthIsEqualTo(128.dp)
       .assertHeightIsEqualTo(128.dp)
@@ -201,10 +200,10 @@ class DesktopPlaceholderTest {
   }
 
   @Test
-  fun placeholder_switchShape1() {
+  fun placeholder_switchShape1() = runComposeUiTest {
     var shape by mutableStateOf(RectangleShape)
 
-    composeTestRule.setContent {
+    setContent {
       Box(
         Modifier
           .size(20.dp)
@@ -218,7 +217,7 @@ class DesktopPlaceholderTest {
       )
     }
 
-    composeTestRule.onNodeWithTag(contentTag)
+    onNodeWithTag(contentTag)
       .assertIsDisplayed()
       .assertWidthIsEqualTo(20.dp)
       .assertHeightIsEqualTo(20.dp)
@@ -227,7 +226,7 @@ class DesktopPlaceholderTest {
 
     shape = CircleShape
 
-    composeTestRule.onNodeWithTag(contentTag)
+    onNodeWithTag(contentTag)
       .assertIsDisplayed()
       .assertWidthIsEqualTo(20.dp)
       .assertHeightIsEqualTo(20.dp)
@@ -238,10 +237,10 @@ class DesktopPlaceholderTest {
   }
 
   @Test
-  fun placeholder_switchShape2() {
+  fun placeholder_switchShape2() = runComposeUiTest {
     var shape by mutableStateOf(RectangleShape)
 
-    composeTestRule.setContent {
+    setContent {
       Box(
         Modifier
           .size(20.dp)
@@ -256,7 +255,7 @@ class DesktopPlaceholderTest {
       )
     }
 
-    composeTestRule.onNodeWithTag(contentTag)
+    onNodeWithTag(contentTag)
       .assertIsDisplayed()
       .assertWidthIsEqualTo(20.dp)
       .assertHeightIsEqualTo(20.dp)
@@ -265,7 +264,7 @@ class DesktopPlaceholderTest {
 
     shape = CircleShape
 
-    composeTestRule.onNodeWithTag(contentTag)
+    onNodeWithTag(contentTag)
       .assertIsDisplayed()
       .assertWidthIsEqualTo(20.dp)
       .assertHeightIsEqualTo(20.dp)
@@ -276,7 +275,7 @@ class DesktopPlaceholderTest {
   }
 
   @Test
-  fun placeholder_inspectableParameter1() {
+  fun placeholder_inspectableParameter1() = runComposeUiTest {
     val highlight = PlaceholderHighlight.shimmer(Color.Red)
     val modifier = Modifier.placeholder(
       visible = true,
@@ -295,7 +294,7 @@ class DesktopPlaceholderTest {
   }
 
   @Test
-  fun placeholder_inspectableParameter2() {
+  fun placeholder_inspectableParameter2() = runComposeUiTest {
     val highlight = PlaceholderHighlight.fade(Color.Red)
     val modifier = Modifier.placeholder(
       visible = true,

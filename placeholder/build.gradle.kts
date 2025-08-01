@@ -1,4 +1,5 @@
-import com.eygraber.conventions.kotlin.kmp.androidUnitTest
+import org.jetbrains.compose.ExperimentalComposeLibrary
+import org.jetbrains.kotlin.gradle.targets.js.testing.KotlinJsTest
 
 plugins {
   id("com.eygraber.conventions-kotlin-multiplatform")
@@ -28,8 +29,13 @@ kotlin {
 
     commonTest {
       dependencies {
+        implementation(kotlin("test"))
+
         implementation(libs.kotlinx.coroutines.test)
         implementation(libs.test.kotest.assertions)
+
+        @OptIn(ExperimentalComposeLibrary::class)
+        implementation(compose.uiTest)
       }
     }
 
@@ -50,8 +56,13 @@ kotlin {
   }
 }
 
+// needed until captureToImage is supported on non-JVM targets
+// since we don't have native or web tests
+tasks.withType<AbstractTestTask>().configureEach {
+  failOnNoDiscoveredTests = false
+}
+
 android {
-  @Suppress("UnstableApiUsage")
   testOptions {
     unitTests {
       isIncludeAndroidResources = true
