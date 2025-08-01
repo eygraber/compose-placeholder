@@ -15,28 +15,27 @@
  * limitations under the License.
  */
 
+@file:OptIn(ExperimentalTestApi::class)
+
 package com.eygraber.compose.placeholder
 
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.test.ExperimentalTestApi
+import androidx.compose.ui.test.runComposeUiTest
 import io.kotest.matchers.equals.shouldBeEqual
-import org.junit.Rule
-import org.junit.Test
+import kotlin.test.Test
 
-class DesktopPlaceholderHighlightTest {
-  @get:Rule
-  val composeTestRule = createComposeRule()
-
+class PlaceholderHighlightTest {
   @Test
-  fun fadeBrush() {
-    composeTestRule.setContent {
+  fun fadeBrush() = runComposeUiTest {
+    setContent {
       PlaceholderHighlight.fade(highlightColor = Color.Blue)
     }
   }
 
   @Test
-  fun shimmerBrush() {
-    composeTestRule.setContent {
+  fun shimmerBrush() = runComposeUiTest {
+    setContent {
       PlaceholderHighlight.shimmer(highlightColor = Color.Blue)
     }
   }
