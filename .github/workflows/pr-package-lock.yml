@@ -24,7 +24,7 @@ jobs:
           gradle-version: wrapper
 
       - name: Run assemble task
-        run: ./gradlew kotlinUpgradePackageLock --rerun-tasks
+        run: ./gradlew kotlinUpgradePackageLock kotlinWasmUpgradePackageLock --rerun-tasks
 
       - name: Commit package lock changes
         id: commit_package_lock_changes
