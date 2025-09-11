@@ -43,6 +43,7 @@ import androidx.compose.ui.node.invalidateDraw
 import androidx.compose.ui.platform.InspectorInfo
 import androidx.compose.ui.unit.LayoutDirection
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 /**
@@ -177,6 +178,9 @@ private class PlaceholderNode(
   private var lastLayoutDirection: LayoutDirection? = null
   private var lastOutline: Outline? = null
 
+  private var animationJob: Job? = null
+  private var highlightJob: Job? = null
+
   fun updateVisible(visible: Boolean) {
     if(this.visible != visible) {
       this.visible = visible
@@ -226,31 +230,43 @@ private class PlaceholderNode(
     coroutineScope.runHighlightAnimation()
   }
 
+  override fun onDetach() {
+    animationJob?.cancel()
+    highlightJob?.cancel()
+
+    animationJob = null
+    highlightJob = null
+  }
+
   private val placeholderAnimation = Animatable(placeholderAlpha)
   private val contentAnimation = Animatable(contentAlpha)
 
   private fun CoroutineScope.runAlphaAnimations() {
-    launch {
-      placeholderAnimation.animateTo(
-        targetValue = if(visible) 1F else 0F,
-        placeholderFadeAnimationSpec,
-      ) {
-        val placeholderAlphaWas0 = placeholderAlpha < 0.01F
-        placeholderAlpha = value
-        if(placeholderAlphaWas0 && placeholderAlpha >= 0.01F && !visible) {
-          coroutineScope.runHighlightAnimation()
-        }
-        invalidateDraw()
-      }
-    }
+    animationJob?.cancel()
 
-    launch {
-      contentAnimation.animateTo(
-        targetValue = if(visible) 0F else 1F,
-        contentFadeAnimationSpec,
-      ) {
-        contentAlpha = value
-        invalidateDraw()
+    animationJob = launch {
+      launch {
+        placeholderAnimation.animateTo(
+          targetValue = if(visible) 1F else 0F,
+          placeholderFadeAnimationSpec,
+        ) {
+          val placeholderAlphaWas0 = placeholderAlpha < 0.01F
+          placeholderAlpha = value
+          if(placeholderAlphaWas0 && placeholderAlpha >= 0.01F && !visible) {
+            coroutineScope.runHighlightAnimation()
+          }
+          invalidateDraw()
+        }
+      }
+
+      launch {
+        contentAnimation.animateTo(
+          targetValue = if(visible) 0F else 1F,
+          contentFadeAnimationSpec,
+        ) {
+          contentAlpha = value
+          invalidateDraw()
+        }
       }
     }
   }
@@ -258,10 +274,13 @@ private class PlaceholderNode(
   private val infiniteAnimation = Animatable(0F)
 
   private fun CoroutineScope.runHighlightAnimation() {
+    highlightJob?.cancel()
+
     val isEffectivelyVisible = visible || placeholderAlpha >= 0.01F
     val animationSpec = highlight?.animationSpec
     if(isEffectivelyVisible && animationSpec != null) {
-      launch {
+      highlightJob = launch {
+        infiniteAnimation.snapTo(0F)
         infiniteAnimation.animateTo(1F, animationSpec) {
           highlightProgress = value
           invalidateDraw()
