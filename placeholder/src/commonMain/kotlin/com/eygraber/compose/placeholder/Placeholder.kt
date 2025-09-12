@@ -252,9 +252,12 @@ private class PlaceholderNode(
         ) {
           val placeholderAlphaWas0 = placeholderAlpha < 0.01F
           placeholderAlpha = value
+
+          // ensure the highlight runs during crossfading
           if(placeholderAlphaWas0 && placeholderAlpha >= 0.01F && !visible) {
             coroutineScope.runHighlightAnimation()
           }
+
           invalidateDraw()
         }
       }
@@ -275,6 +278,7 @@ private class PlaceholderNode(
 
   private fun CoroutineScope.runHighlightAnimation() {
     highlightJob?.cancel()
+    highlightJob = null
 
     val isEffectivelyVisible = visible || placeholderAlpha >= 0.01F
     val animationSpec = highlight?.animationSpec
@@ -282,7 +286,14 @@ private class PlaceholderNode(
       highlightJob = launch {
         infiniteAnimation.snapTo(0F)
         infiniteAnimation.animateTo(1F, animationSpec) {
-          highlightProgress = value
+          if(placeholderAlpha < 0.01F && !visible) {
+            highlightJob?.cancel()
+            highlightJob = null
+          }
+          else {
+            highlightProgress = value
+          }
+
           invalidateDraw()
         }
       }
