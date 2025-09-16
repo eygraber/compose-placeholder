@@ -57,4 +57,4 @@ ktlint = { module = "com.pinterest.ktlint:ktlint-bom", version.ref = "ktlint" }
 test-compose-android-uiJunit = { module = "androidx.compose.ui:ui-test-junit4" }
 test-compose-android-uiTestManifest = { module = "androidx.compose.ui:ui-test-manifest" }
 test-kotest-assertions = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
-test-robolectric = "org.robolectric:robolectric:4.15.1"
+test-robolectric = "org.robolectric:robolectric:4.16"
