@@ -13,7 +13,7 @@ detekt = "1.23.8"
 detektCompose = "0.4.27"
 detektEygraber = "1.0.12"
 
-dokka = "2.0.0"
+dokka = "2.1.0"
 
 imageLoader = "1.10.0"
 
