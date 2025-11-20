@@ -4,19 +4,12 @@ version=$(sed -n 's/ktlint = "\(.*\)"/\1/p' gradle/libs.versions.toml)
 url="https://github.com/pinterest/ktlint/releases/download/$version/ktlint"
 
 # Set the destination directory and file name
-destination_dir="tmp"
+destination_dir="/tmp"
 file_name="ktlint-$version"
 
 mkdir -p $destination_dir
 
-# setting nullglob ensures proper behavior if nothing matches the glob
-shopt -s nullglob
-for file in $destination_dir/ktlint-*; do
-    if [[ "$file" != "$destination_dir/$file_name" ]]; then
-        rm "$file"
-    fi
-done
-shopt -u nullglob
+
 
 # Check if the file already exists in the destination directory
 if [ ! -e "$destination_dir/$file_name" ]; then
