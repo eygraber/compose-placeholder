@@ -18,8 +18,8 @@ kotlin {
       dependencies {
         implementation(projects.placeholder)
         implementation(projects.placeholderMaterial)
-        implementation(compose.material)
-        implementation(compose.materialIconsExtended)
+        implementation(libs.compose.material)
+        implementation(libs.compose.materialIcons)
         implementation(libs.imageLoader)
       }
     }
