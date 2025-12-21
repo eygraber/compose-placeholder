@@ -2,7 +2,7 @@ plugins {
   id("com.eygraber.conventions-kotlin-multiplatform")
   id("com.eygraber.conventions-android-library")
   id("com.eygraber.conventions-compose-jetbrains")
-  id("com.eygraber.conventions-detekt")
+  id("com.eygraber.conventions-detekt2")
   id("com.eygraber.conventions-publish-maven-central")
 }
 

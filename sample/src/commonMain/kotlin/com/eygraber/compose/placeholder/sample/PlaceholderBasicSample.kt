@@ -64,22 +64,22 @@ private fun Sample() {
   ) { padding ->
     // Simulate a fake 2-second 'load'. Ideally this 'refreshing' value would
     // come from a ViewModel or similar
-    var refreshing by remember { mutableStateOf(false) }
-    LaunchedEffect(refreshing) {
-      if(refreshing) {
+    var isRefreshing by remember { mutableStateOf(false) }
+    LaunchedEffect(isRefreshing) {
+      if(isRefreshing) {
         delay(2000)
-        refreshing = false
+        isRefreshing = false
       }
     }
 
     val state = rememberPullRefreshState(
-      refreshing = refreshing,
-      onRefresh = { refreshing = true }
+      refreshing = isRefreshing,
+      onRefresh = { isRefreshing = true }
     )
 
     Box(Modifier.pullRefresh(state)) {
       LazyColumn(contentPadding = padding) {
-        if(!refreshing) {
+        if(!isRefreshing) {
           item {
             ListItem(
               painter = rememberVectorPainter(Icons.Default.ArrowDownward),
@@ -93,13 +93,13 @@ private fun Sample() {
             text = "Text",
             // We're using the modifier provided by placeholder-material which
             // uses good default values for the color
-            childModifier = Modifier.placeholder(visible = refreshing)
+            childModifier = Modifier.placeholder(visible = isRefreshing)
           )
         }
       }
 
       PullRefreshIndicator(
-        refreshing = refreshing,
+        refreshing = isRefreshing,
         state = state,
         modifier = Modifier.align(Alignment.TopCenter)
       )
