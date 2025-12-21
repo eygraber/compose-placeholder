@@ -74,7 +74,7 @@ jobs:
           gradle-version: wrapper
 
       - name: Run Android lint
-        run: ./gradlew lintRelease
+        run: ./gradlew lint
 
   test:
     strategy:
