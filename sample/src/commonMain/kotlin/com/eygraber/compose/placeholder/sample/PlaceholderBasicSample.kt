@@ -25,8 +25,6 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowDownward
 import androidx.compose.material.pullrefresh.PullRefreshIndicator
 import androidx.compose.material.pullrefresh.pullRefresh
 import androidx.compose.material.pullrefresh.rememberPullRefreshState
@@ -41,6 +39,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.window.singleWindowApplication
 import com.eygraber.compose.placeholder.material.placeholder
+import com.eygraber.compose.placeholder.sample.icons.ArrowDownward
 import com.seiko.imageloader.rememberImagePainter
 import kotlinx.coroutines.delay
 
@@ -82,7 +81,7 @@ private fun Sample() {
         if(!isRefreshing) {
           item {
             ListItem(
-              painter = rememberVectorPainter(Icons.Default.ArrowDownward),
+              painter = rememberVectorPainter(ArrowDownward),
               text = "Pull down"
             )
           }

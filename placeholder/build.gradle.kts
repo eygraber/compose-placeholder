@@ -1,6 +1,5 @@
 import com.android.build.api.dsl.androidLibrary
 import com.eygraber.conventions.compose.cmpTest
-import org.jetbrains.compose.ExperimentalComposeLibrary
 
 plugins {
   id("com.eygraber.conventions-kotlin-multiplatform")
@@ -36,7 +35,7 @@ kotlin {
 
   sourceSets {
     commonMain.dependencies {
-      implementation(compose.foundation)
+      implementation(libs.compose.foundation)
       implementation(libs.compose.uiUtil)
       implementation(libs.kotlinx.coroutines.core)
     }
@@ -47,13 +46,11 @@ kotlin {
       implementation(libs.kotlinx.coroutines.test)
       implementation(libs.test.kotest.assertions)
 
-      @OptIn(ExperimentalComposeLibrary::class)
-      implementation(compose.uiTest)
+      implementation(libs.compose.uiTest)
     }
 
     cmpTest.dependencies {
-      @OptIn(ExperimentalComposeLibrary::class)
-      implementation(compose.uiTest)
+      implementation(libs.compose.uiTest)
     }
 
     named("androidHostTest").dependencies {
@@ -65,7 +62,7 @@ kotlin {
     jvmTest {
       dependencies {
         implementation(compose.desktop.currentOs)
-        implementation(compose.desktop.uiTestJUnit4)
+        implementation(libs.test.compose.desktop.uiJunit)
       }
     }
   }

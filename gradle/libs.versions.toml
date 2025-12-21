@@ -3,9 +3,10 @@ agp = "8.13.2"
 
 android-sdk-compile = "35"
 android-sdk-target = "35"
-android-sdk-min = "21"
+android-sdk-min = "23"
 
-composeJetbrains = "1.9.3"
+composeJetbrains = "1.10.0-rc02"
+composeMaterial3Jetbrains = "1.9.0"
 
 conventions = "0.0.94"
 
@@ -40,6 +41,14 @@ buildscript-dokka = { module = "org.jetbrains.dokka:dokka-gradle-plugin", versio
 buildscript-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 buildscript-publish = { module = "com.vanniktech:gradle-maven-publish-plugin", version.ref = "publish" }
 
+compose-animation = { module = "org.jetbrains.compose.animation:animation", version.ref="composeJetbrains" }
+compose-foundation = { module = "org.jetbrains.compose.foundation:foundation", version.ref = "composeJetbrains" }
+compose-material = { module = "org.jetbrains.compose.material:material", version.ref = "composeJetbrains" }
+compose-material3 = { module = "org.jetbrains.compose.material3:material3", version.ref = "composeMaterial3Jetbrains" }
+compose-materialIcons = "org.jetbrains.compose.material:material-icons-core:1.7.3"
+compose-runtime = { module = "org.jetbrains.compose.runtime:runtime", version.ref = "composeJetbrains" }
+compose-runtimeSaveable = { module = "org.jetbrains.compose.runtime:runtime-saveable", version.ref = "composeJetbrains" }
+compose-uiTest = { module = "org.jetbrains.compose.ui:ui-test", version.ref = "composeJetbrains" }
 compose-uiUtil = { module = "org.jetbrains.compose.ui:ui-util", version.ref = "composeJetbrains" }
 
 detektCompose = { module = "io.nlopez.compose.rules:detekt", version.ref = "detektCompose" }
@@ -56,5 +65,6 @@ ktlint = { module = "com.pinterest.ktlint:ktlint-bom", version.ref = "ktlint" }
 
 test-compose-android-uiJunit = { module = "androidx.compose.ui:ui-test-junit4" }
 test-compose-android-uiTestManifest = { module = "androidx.compose.ui:ui-test-manifest" }
+test-compose-desktop-uiJunit = { module = "org.jetbrains.compose.ui:ui-test-junit4", version.ref = "composeJetbrains" }
 test-kotest-assertions = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
 test-robolectric = "org.robolectric:robolectric:4.15.1"
