@@ -1,22 +1,30 @@
+import com.android.build.api.dsl.androidLibrary
 import com.eygraber.conventions.compose.cmpTest
 import org.jetbrains.compose.ExperimentalComposeLibrary
 
 plugins {
   id("com.eygraber.conventions-kotlin-multiplatform")
-  id("com.eygraber.conventions-android-library")
+  id("com.eygraber.conventions-android-kmp-library")
   id("com.eygraber.conventions-compose-jetbrains")
   id("com.eygraber.conventions-detekt2")
   id("com.eygraber.conventions-publish-maven-central")
 }
 
-android {
-  namespace = "com.eygraber.compose.placeholder"
-}
-
 kotlin {
   defaultKmpTargets(
-    project = project
+    project = project,
+    androidNamespace = "com.eygraber.compose.placeholder",
   )
+
+  androidLibrary {
+    withHostTest {
+      isIncludeAndroidResources = true
+    }
+
+    withDeviceTest {
+      animationsDisabled = true
+    }
+  }
 
   js {
     browser {
@@ -48,7 +56,7 @@ kotlin {
       implementation(compose.uiTest)
     }
 
-    androidUnitTest.dependencies {
+    named("androidHostTest").dependencies {
       implementation(libs.test.compose.android.uiJunit)
       implementation(libs.test.compose.android.uiTestManifest)
       implementation(libs.test.robolectric)
@@ -60,17 +68,5 @@ kotlin {
         implementation(compose.desktop.uiTestJUnit4)
       }
     }
-  }
-}
-
-android {
-  testOptions {
-    unitTests {
-      isIncludeAndroidResources = true
-    }
-    unitTests.all {
-      it.useJUnit()
-    }
-    animationsDisabled = true
   }
 }

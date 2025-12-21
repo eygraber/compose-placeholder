@@ -57,7 +57,7 @@ internal actual fun SemanticsNodeInteraction.captureToImage(): ImageBitmap {
     return processMultiWindowScreenshot(node)
   }
 
-  val view = (node.root!! as ViewRootForTest).view
+  val view = requireNotNull((node.root as? ViewRootForTest)?.view)
 
   // If we are in dialog use its window to capture the bitmap
   val dialogParentNodeMaybe = node.findClosestParentNode(includeSelf = true) {
@@ -136,13 +136,13 @@ private fun processMultiWindowScreenshot(
 private fun findNodePosition(
   node: SemanticsNode
 ): Offset {
-  val view = (node.root!! as ViewRootForTest).view
+  val view = requireNotNull((node.root as? ViewRootForTest)?.view)
   val locationOnScreen = intArrayOf(0, 0)
   view.getLocationOnScreen(locationOnScreen)
   val x = locationOnScreen[0]
   val y = locationOnScreen[1]
 
-  return Offset(x.toFloat(), y.toFloat())
+  return Offset(x = x.toFloat(), y = y.toFloat())
 }
 
 internal fun findDialogWindowProviderInParent(view: View): DialogWindowProvider? {
