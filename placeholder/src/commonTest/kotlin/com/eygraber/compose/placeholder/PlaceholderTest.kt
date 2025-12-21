@@ -53,6 +53,7 @@ import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 
+@Suppress("AbstractClassCanBeConcreteClass")
 abstract class PlaceholderTest {
   private val contentTag = "Content"
 
@@ -68,14 +69,14 @@ abstract class PlaceholderTest {
 
   @Test
   fun placeholder_switchVisible1() = runComposeUiTest {
-    var visible by mutableStateOf(true)
+    var isVisible by mutableStateOf(true)
 
     setContent {
       Box(
         Modifier
           .size(128.dp)
           .background(color = Color.Black)
-          .placeholder(visible = visible, color = Color.Red)
+          .placeholder(visible = isVisible, color = Color.Red)
           .testTag(contentTag)
       )
     }
@@ -87,7 +88,7 @@ abstract class PlaceholderTest {
       .captureToImage()
       .assertPixels(Color.Red)
 
-    visible = false
+    isVisible = false
 
     onNodeWithTag(contentTag)
       .assertIsDisplayed()
@@ -99,7 +100,7 @@ abstract class PlaceholderTest {
 
   @Test
   fun placeholder_switchVisible2() = runComposeUiTest {
-    var visible by mutableStateOf(true)
+    var isVisible by mutableStateOf(true)
 
     setContent {
       Box(
@@ -107,7 +108,7 @@ abstract class PlaceholderTest {
           .size(128.dp)
           .background(color = Color.Black)
           .placeholder(
-            visible = visible,
+            visible = isVisible,
             color = Color.Gray,
             highlight = Solid(Color.Red)
           )
@@ -122,7 +123,7 @@ abstract class PlaceholderTest {
       .captureToImage()
       .assertPixels(Color.Red)
 
-    visible = false
+    isVisible = false
 
     onNodeWithTag(contentTag)
       .assertIsDisplayed()

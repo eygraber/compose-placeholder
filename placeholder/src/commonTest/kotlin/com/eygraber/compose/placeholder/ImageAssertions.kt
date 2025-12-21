@@ -53,9 +53,9 @@ fun ImageBitmap.assertPixels(expected: Color, tolerance: Float = 0.001f) {
  */
 fun ImageBitmap.assertPixelsOfVertices(expected: Color) {
   toPixelMap().run {
-    assertPixelColor(expected, 0, 0)
-    assertPixelColor(expected, 0, height - 1)
-    assertPixelColor(expected, width - 1, 0)
-    assertPixelColor(expected, width - 1, height - 1)
+    assertPixelColor(expected = expected, x = 0, y = 0)
+    assertPixelColor(expected = expected, x = 0, y = height - 1)
+    assertPixelColor(expected = expected, x = width - 1, y = 0)
+    assertPixelColor(expected = expected, x = width - 1, y = height - 1)
   }
 }

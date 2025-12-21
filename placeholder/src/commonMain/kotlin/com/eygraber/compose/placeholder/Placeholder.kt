@@ -1,3 +1,5 @@
+@file:Suppress("BooleanPropertyNaming", "ClassOrdering")
+
 /*
  * Copyright 2021 The Android Open Source Project
  * Copyright 2023 Eliezer Graber
@@ -399,8 +401,10 @@ private fun DrawScope.drawPlaceholder(
 private inline fun DrawScope.withLayer(
   paint: Paint,
   drawBlock: DrawScope.() -> Unit,
-) = drawIntoCanvas { canvas ->
-  canvas.saveLayer(size.toRect(), paint)
-  drawBlock()
-  canvas.restore()
+) {
+  drawIntoCanvas { canvas ->
+    canvas.saveLayer(size.toRect(), paint)
+    drawBlock()
+    canvas.restore()
+  }
 }

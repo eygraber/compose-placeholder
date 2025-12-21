@@ -25,6 +25,7 @@ import androidx.compose.ui.test.runComposeUiTest
 import io.kotest.matchers.equals.shouldBeEqual
 import kotlin.test.Test
 
+@Suppress("AbstractClassCanBeConcreteClass")
 abstract class PlaceholderHighlightTest {
   @Test
   fun fadeBrush() = runComposeUiTest {
