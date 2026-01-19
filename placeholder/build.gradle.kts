@@ -1,4 +1,3 @@
-import com.android.build.api.dsl.androidLibrary
 import com.eygraber.conventions.compose.cmpTest
 
 plugins {
