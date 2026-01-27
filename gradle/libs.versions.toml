@@ -12,7 +12,7 @@ conventions = "0.0.98"
 
 detekt = "2.0.0-alpha.1"
 detektCompose = "0.5.5"
-detektEygraber = "1.0.14"
+detektEygraber = "1.0.15"
 
 dokka = "2.1.0"
 
