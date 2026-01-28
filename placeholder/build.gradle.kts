@@ -66,3 +66,7 @@ kotlin {
     }
   }
 }
+
+tasks.withType(Test::class.java).configureEach {
+  maxHeapSize = "4g"
+}
