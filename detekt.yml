@@ -4,32 +4,27 @@ config:
   checkExhaustiveness: true
 
 processors:
-  active: true
-  exclude:
-  # - 'FunctionCountProcessor'
-  # - 'PropertyCountProcessor'
-  # - 'ClassCountProcessor'
-  # - 'PackageCountProcessor'
-  # - 'KtFileCountProcessor'
+  active: false
 
 console-reports:
   active: true
   exclude:
-    - 'ProjectStatisticsReport'
     - 'ComplexityReport'
+    # - 'IssuesReport'
+    - 'FileBasedIssuesReport'
+    - 'LiteIssuesReport'
     - 'NotificationReport'
-    #  - 'FindingsReport'
-    - 'FileBasedFindingsReport'
+    - 'ProjectStatisticsReport'
 
 comments:
   active: false
   AbsentOrWrongFileLicense:
     active: false
-    licenseTemplateFile: 'license.template'
+    licenseTemplate: 'license.template'
     licenseTemplateIsRegex: false
-  CommentOverPrivateFunction:
+  DocumentationOverPrivateFunction:
     active: false
-  CommentOverPrivateProperty:
+  DocumentationOverPrivateProperty:
     active: false
   DeprecatedBlockTag:
     active: false
@@ -233,11 +228,6 @@ exceptions:
       - Throwable
       - RuntimeException
 
-formatting-eygraber:
-  NoWhitespaceAfterKeyword:
-    active: true
-    autoCorrect: true
-
 naming:
   active: true
   BooleanPropertyNaming:
@@ -340,6 +330,8 @@ performance:
   SpreadOperator:
     active: false
     excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**']
+  UnnecessaryInitOnArray:
+    active: true
   UnnecessaryPartOfBinaryExpression:
     active: true
   UnnecessaryTemporaryInstantiation:
@@ -522,8 +514,8 @@ style:
     comments: ['FIXME', 'STOPSHIP']
   ForbiddenImport:
     active: true
-    imports: []
-    forbiddenPatterns: ''
+    allowedImports: []
+    forbiddenImports: []
   ForbiddenMethodCall:
     active: true
     methods:
@@ -634,8 +626,6 @@ style:
   UnderscoresInNumericLiterals:
     active: true
     acceptableLength: 4
-  UnnecessaryAnnotationUseSiteTarget:
-    active: true
   UnnecessaryAny:
     active: true
   UnnecessaryApply:
@@ -645,6 +635,8 @@ style:
   UnnecessaryBracesAroundTrailingLambda:
     active: true
   UnnecessaryFilter:
+    active: true
+  UnnecessaryFullyQualifiedName:
     active: true
   UnnecessaryInheritance:
     active: true
@@ -711,11 +703,6 @@ style:
     active: true
     excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**']
     excludeImports: []
-
-style-eygraber:
-  NewlineForMultilineKeyword:
-    active: true
-    autoCorrect: true
 
 Compose:
   CompositionLocalAllowlist:
