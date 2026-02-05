@@ -17,7 +17,7 @@ dokka = "2.1.0"
 
 imageLoader = "1.10.0"
 
-kotlin = "2.3.0"
+kotlin = "2.3.10"
 
 kotest = "6.1.2"
 
