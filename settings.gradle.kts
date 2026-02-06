@@ -46,7 +46,7 @@ dependencyResolutionManagement {
 }
 
 plugins {
-  id("com.eygraber.conventions.settings") version "0.0.98"
+  id("com.eygraber.conventions.settings") version "0.0.99"
   id("com.gradle.develocity") version "4.3.2"
 }
 

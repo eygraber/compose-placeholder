@@ -99,7 +99,7 @@ jobs:
         if: matrix.os == 'ubuntu-latest'
 
       - name: Run Apple tests
-        run: ./gradlew iosX64Test
+        run: ./gradlew iosSimulatorArm64Test
         if: matrix.os == 'macos-latest'
 
 env:
