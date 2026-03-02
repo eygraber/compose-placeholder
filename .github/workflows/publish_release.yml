@@ -50,7 +50,7 @@ jobs:
           git push origin releases/${{ env.RELEASE_VERSION }}
 
       - name: Import GPG Key
-        uses: crazy-max/ghaction-import-gpg@v6
+        uses: crazy-max/ghaction-import-gpg@v7
         with:
           gpg_private_key: ${{ secrets.GIT_SIGNING_PRIVATE_KEY }}
           passphrase: ${{ secrets.GIT_SIGNING_PRIVATE_KEY_PASSWORD }}
