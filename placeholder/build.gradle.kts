@@ -14,7 +14,9 @@ kotlin {
     androidNamespace = "com.eygraber.compose.placeholder",
   )
 
-  androidLibrary {
+  android {
+    androidResources.enable = true
+
     withHostTest {
       isIncludeAndroidResources = true
     }
