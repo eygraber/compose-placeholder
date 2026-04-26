@@ -611,7 +611,7 @@ style:
     active: true
   SerialVersionUIDInSerializableClass:
     active: true
-  SpacingAfterPackageDeclaration:
+  SpacingAfterPackageAndImports:
     active: true
   StringShouldBeRawString:
     active: false
