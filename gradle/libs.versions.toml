@@ -21,7 +21,7 @@ kotlin = "2.3.21"
 
 kotest = "6.1.11"
 
-kotlinx-coroutines = "1.10.2"
+kotlinx-coroutines = "1.11.0"
 
 ktlint = "1.8.0"
 ktlintCustomRules = "0.1.1"
