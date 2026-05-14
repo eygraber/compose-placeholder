@@ -79,7 +79,7 @@ jobs:
   test:
     strategy:
       matrix:
-        os: [ macos-latest, ubuntu-latest ]
+        os: [ macos-26, ubuntu-latest ]
     runs-on: ${{matrix.os}}
     steps:
       - uses: actions/checkout@v6
@@ -100,7 +100,7 @@ jobs:
 
       - name: Run Apple tests
         run: ./gradlew iosSimulatorArm64Test
-        if: matrix.os == 'macos-latest'
+        if: matrix.os == 'macos-26'
 
 env:
   GRADLE_OPTS: -Dorg.gradle.daemon=false -Dkotlin.incremental=false -Dorg.gradle.jvmargs="-Xmx12g -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8 -XX:MaxMetaspaceSize=1024m"

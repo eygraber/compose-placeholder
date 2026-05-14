@@ -21,7 +21,7 @@ package com.eygraber.compose.placeholder
 
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.test.ExperimentalTestApi
-import androidx.compose.ui.test.runComposeUiTest
+import androidx.compose.ui.test.v2.runComposeUiTest
 import io.kotest.matchers.equals.shouldBeEqual
 import kotlin.test.Test
 
