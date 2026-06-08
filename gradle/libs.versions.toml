@@ -11,7 +11,7 @@ composeMaterial3Jetbrains = "1.9.0"
 conventions = "0.0.100"
 
 detekt = "2.0.0-alpha.3"
-detektCompose = "0.5.9"
+detektCompose = "0.6.0"
 
 dokka = "2.2.0"
 
