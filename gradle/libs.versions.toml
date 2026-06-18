@@ -19,7 +19,7 @@ imageLoader = "1.10.0"
 
 kotlin = "2.4.0"
 
-kotest = "6.2.0"
+kotest = "6.2.1"
 
 kotlinx-coroutines = "1.11.0"
 
