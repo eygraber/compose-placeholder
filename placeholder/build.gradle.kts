@@ -1,4 +1,5 @@
 import com.eygraber.conventions.compose.cmpTest
+import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 
 plugins {
   id("com.eygraber.conventions-kotlin-multiplatform")
@@ -27,11 +28,19 @@ kotlin {
   }
 
   js {
+    // an executable binary is needed so that webpack bundles the Skiko runtime for Compose UI tests
+    binaries.executable()
+
     browser {
       testTask {
         enabled = false
       }
     }
+  }
+
+  @OptIn(ExperimentalWasmDsl::class)
+  wasmJs {
+    binaries.executable()
   }
 
   sourceSets {

@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
+
 plugins {
   id("com.eygraber.conventions-kotlin-multiplatform")
   id("com.eygraber.conventions-android-kmp-library")
@@ -11,6 +13,16 @@ kotlin {
     project = project,
     androidNamespace = "com.eygraber.compose.placeholder.material3",
   )
+
+  js {
+    // an executable binary is needed so that webpack bundles the Skiko runtime for Compose UI tests
+    binaries.executable()
+  }
+
+  @OptIn(ExperimentalWasmDsl::class)
+  wasmJs {
+    binaries.executable()
+  }
 
   sourceSets {
     commonMain {
