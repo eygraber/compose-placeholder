@@ -66,6 +66,7 @@ kotlin {
     named("androidHostTest").dependencies {
       implementation(libs.test.compose.android.uiJunit)
       implementation(libs.test.compose.android.uiTestManifest)
+      implementation(libs.test.espresso)
       implementation(libs.test.robolectric)
     }
 
@@ -80,4 +81,5 @@ kotlin {
 
 tasks.withType(Test::class.java).configureEach {
   maxHeapSize = "4g"
+  jvmArgs("--add-exports=java.base/jdk.internal.access=ALL-UNNAMED")
 }

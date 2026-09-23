@@ -69,5 +69,6 @@ ktlintCustomRules = { module = "com.eygraber.ktlint.rules:ktlint-rules", version
 test-compose-android-uiJunit = { module = "androidx.compose.ui:ui-test-junit4" }
 test-compose-android-uiTestManifest = { module = "androidx.compose.ui:ui-test-manifest" }
 test-compose-desktop-uiJunit = { module = "org.jetbrains.compose.ui:ui-test-junit4", version.ref = "composeJetbrains" }
+test-espresso = "androidx.test.espresso:espresso-core:3.7.0"
 test-kotest-assertions = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
 test-robolectric = "org.robolectric:robolectric:4.17"
