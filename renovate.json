@@ -7,6 +7,10 @@
   "prHourlyLimit": 3,
   "packageRules": [
     {
+      "matchManagers": ["gradle-wrapper"],
+      "automerge": true
+    },
+    {
       "groupName": "gradle-conventions",
       "matchPackagePrefixes": ["com.eygraber.conventions"],
       "automerge": true
