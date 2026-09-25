@@ -20,6 +20,7 @@ package com.eygraber.compose.placeholder.material
 import androidx.compose.animation.core.AnimationSpec
 import androidx.compose.animation.core.InfiniteRepeatableSpec
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.ReadOnlyComposable
 import com.eygraber.compose.placeholder.PlaceholderDefaults
 import com.eygraber.compose.placeholder.PlaceholderHighlight
 import com.eygraber.compose.placeholder.fade
@@ -34,6 +35,7 @@ import com.eygraber.compose.placeholder.shimmer
  * @param animationSpec the [AnimationSpec] to configure the animation.
  */
 @Composable
+@ReadOnlyComposable
 public fun PlaceholderHighlight.Companion.fade(
   animationSpec: InfiniteRepeatableSpec<Float> = PlaceholderDefaults.fadeAnimationSpec,
 ): PlaceholderHighlight = PlaceholderHighlight.fade(
@@ -55,6 +57,7 @@ public fun PlaceholderHighlight.Companion.fade(
  * Defaults to 0.6f.
  */
 @Composable
+@ReadOnlyComposable
 public fun PlaceholderHighlight.Companion.shimmer(
   animationSpec: InfiniteRepeatableSpec<Float> = PlaceholderDefaults.shimmerAnimationSpec,
   /* Removed to support JS @FloatRange(from = 0.0, to = 1.0)*/
